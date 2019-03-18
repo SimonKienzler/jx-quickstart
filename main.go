@@ -1,23 +1,24 @@
 package main
 
 import (
-	"fmt"
-	"log"
+	"html/template"
 	"net/http"
+	"time"
 )
 
 func handler(w http.ResponseWriter, r *http.Request) {
-	title := "Jenkins X golang http example"
+	t := time.Now()
+	time := t.Format("02.01.2006, 15:04:05 Uhr")
 
-	from := ""
-	if r.URL != nil {
-		from = r.URL.String()
-	}
-	if from != "/favicon.ico" {
-		log.Printf("title: %s\n", title)
-	}
+	tmpl := template.Must(template.ParseFiles("./templates/index.html"))
 
-	fmt.Fprintf(w, "Hello from:  "+title+"\n")
+	data := make(map[string]string)
+	data["pageTitle"] = "Jenkins X Test"
+	data["paragraph1"] = "This is a test of Jenkins X."
+	data["paragraph2"] = "And it seems to be working."
+	data["time"] = time
+
+	tmpl.Execute(w, data)
 }
 
 func main() {
