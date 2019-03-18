@@ -11,7 +11,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	log.Println(r.URL)
 
 	t := time.Now()
-	time := t.Format("02.01.2006, 15:04:05 Uhr")
+	time := t.Format("02.01.2006, 15:04:05")
 
 	data := make(map[string]string)
 	data["pageTitle"] = "Jenkins X Test"
@@ -29,6 +29,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 			<style>
 				body {
 					font-family: sans-serif;
+					background: #dfdfdf;
 				}
 	
 				.box {
@@ -37,6 +38,8 @@ func handler(w http.ResponseWriter, r *http.Request) {
 					padding: 30px;
 					border: 1px solid #666666;
 					border-radius: 5px;
+					background: rgba(255,255,255,0.6);
+					box-shadow: 0px 0px 10px #999999;
 				}
 	
 				.time {
