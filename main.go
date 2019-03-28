@@ -14,7 +14,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	time := t.Format("02.01.2006, 15:04:05")
 
 	data := make(map[string]string)
-	data["pageTitle"] = "Jenkins X Test"
+	data["pageTitle"] = "Jenkins X Test (Dev-Branch)"
 	data["paragraph1"] = `This is a test of Jenkins X using devpods. They provide 
 	a simple way of developing a cloud based application.`
 	data["paragraph2"] = "And it is most definetely working. 😃"
